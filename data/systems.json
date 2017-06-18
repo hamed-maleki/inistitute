@@ -1,0 +1,28 @@
+{
+    "systems":[
+        {
+            "title":"دانشگاه",
+            "iconClass":"fa-graduation-cap",
+            "style":{
+                "background-color":"#00BCD5"
+            },
+            "id":1
+        },
+        {
+            "title":"موسسات",
+            "iconClass":"fa-bank",
+            "style":{
+                "background-color":"#8BC24A"
+            },
+            "id": 2
+        },
+        {
+            "title":"آموزشگاه",
+            "iconClass":"fa-building",
+            "style":{
+                "background-color":"#FF9700"
+            },
+            "id": 3
+        }
+    ]
+}

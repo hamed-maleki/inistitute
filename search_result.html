@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>انیستیتو یاب</title>
+    <link href="assets/styles/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/styles/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/styles/main.css" rel="stylesheet">
+    <script src="assets/scripts/jquery.min.js"></script>
+    <script src="assets/scripts/bootstrap.min.js"></script>
+    <script src="assets/scripts/angular.min.js"></script>
+    <script src="assets/scripts/main.js"></script>
+    <style>
+        .filter-icon {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl" data-ng-init="getcookieSchoolPage()">
+    <nav class="container-fluid navbar navbar-fixed-top" ng-include="'modules/nav.html'">
+    </nav>
+    <div class="container-fluid special-margin-top">
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="media/1.jpg" class="result-pic">
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 my-margin-top tab-container">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">مورد اول</a></li>
+                    <li><a data-toggle="tab" href="#menu1">مورد دوم</a></li>
+                    <li><a data-toggle="tab" href="#menu2">مورد سوم</a></li>
+                </ul>
+                <div class="tab-content my-margin-top">
+                    <div id="home" class="tab-pane fade in active">
+                        <h3>مورد اول</h3>
+                        <p>ددر ایابا تن.اسیناسطتزلش</p>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <h3>Menu 1</h3>
+                        <p>Some content in menu 1.</p>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <h3>Menu 2</h3>
+                        <p>Some content in menu 2.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <footer ng-include="'modules/footer.html'">
+    </footer>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+</body>
+
+</html>

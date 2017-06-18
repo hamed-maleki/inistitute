@@ -1,0 +1,6 @@
+<div class="col-sm-4 my-margin-top my-padding" ng-repeat="system in systems">
+    <div class="subject shadow center" ng-style="system.style" style="cursor: pointer" ng-click="systemType(system.id)">
+        <i class="fa" ng-class="system.iconClass"></i>
+        <h1>{{system.title}}</h1>
+    </div>
+</div>
