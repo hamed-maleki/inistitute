@@ -1,0 +1,7 @@
+nav, footer {
+  background-color: green;
+  border-radius: 5px; }
+
+footer {
+  color: white;
+  width: 50px; }

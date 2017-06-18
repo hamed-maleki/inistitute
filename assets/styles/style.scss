@@ -1,0 +1,14 @@
+$color: green;
+$width: 100px;
+@mixin border-radius($radius){
+    border-radius : $radius;
+}
+nav {
+    background-color: $color;
+    @include border-radius(5px);
+}
+footer{
+    @extend nav;
+    color: white;
+    width: $width/2;
+}
