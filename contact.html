@@ -1,0 +1,69 @@
+!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>انیستیتو یاب</title>
+    <link href="assets/styles/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/styles/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/styles/main.css" rel="stylesheet">
+    <script src="assets/scripts/jquery.min.js"></script>
+    <script src="assets/scripts/bootstrap.min.js"></script>
+    <script src="assets/scripts/angular.min.js"></script>
+    <script src="assets/scripts/main.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl" data-ng-init="getcookieCompairePage()">
+    <nav class="container-fluid navbar navbar-fixed-top" ng-include="'modules/nav.html'">
+    </nav>
+    <div class="container special-margin-top" style="min-height: 458px;">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label for="name">مشخصات :</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="sbj">موضوع :</label>
+                    <input type="text" class="form-control" id="sbj">
+                </div>
+                <div class="form-group">
+                    <label for="comment">شرح :</label>
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+                <button type="submit" class="btn btn-info">
+                    <i class="fa fa-send"></i>
+                    ارسال
+                </button>
+            </div>
+            <div class="col-sm-4 my-margin-top ">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-push-8">
+                        <i class="fa fa-phone contact-icon"></i>
+                    </div>
+                    <div class="col-sm-8 col-sm-pull-4 ">
+                        <p class="contact-info">086-33687327</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-4 col-sm-push-8 my-margin-top">
+                        <i class="fa fa-home contact-icon"></i>
+                    </div>
+                    <div class="col-sm-8 col-sm-pull-4 my-margin-top">
+                        <p class="contact-info">درآستانه در بپیچ به سمت چپ بیا بالا</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-4 col-sm-push-8 my-margin-top">
+                        <i class="fa fa-envelope-open-o contact-icon"></i>
+                    </div>
+                    <div class="col-sm-8 col-sm-pull-4 my-margin-top">
+                        <p class="contact-info">hyengimolki@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ng-include="'modules/footer.html'"></footer>
+</body>
+
+</html>

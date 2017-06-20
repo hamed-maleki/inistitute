@@ -410,6 +410,19 @@ footer i{
     overflow-y: scroll;
     position: relative;
 }
+.contact-icon {
+    font-size: 40px;
+    padding: 10px 15px;
+    border: 1px solid #EA1E63;
+    border-radius: 50%;
+    color: #EA1E63;
+}
+.contact-info {
+    margin-top: 5px;
+}
+label {
+    direction: rtl;
+}
 @media screen and (max-width:1024px){
     .subject {
         margin: 0 -7px 5px;
