@@ -164,12 +164,12 @@
                     <form>
                         <div class="form-group">
                             <label for="search"> جستجو </label>
-                            <input type="text" placeholder="جستجو بر اسام نام یا رشته های مورد نظر" class="form-control" id="search" ng-model="searchItem" autocomplete="off">
+                            <input type="text" placeholder="جستجو بر اسام نام یا رشته های مورد نظر" class="form-control" id="search" ng-model="searchItem" ng-change="resetSelectedItem(searchItem)" autocomplete="off">
                         </div>
                         <button type="submit" class="btn btn-danger">Submit</button>
                     </form>
                     <div class="row search-scroll" id="myDemo">
-                        <li class="span-search pointer searchLink" id="list{{search.id}}" ng-repeat="search in indexSearch|filter:{name : searchItem}" ng-click="schoolPage(search.id)">
+                        <li class="span-search pointer searchLink" id="list{{search.id}}" ng-repeat="search in indexSearch|filter:{name : searchingItem}" ng-click="schoolPage(search.id)">
                             {{search.name}}
                         </li>
                     </div>

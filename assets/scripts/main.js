@@ -191,14 +191,18 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
         }
         window.location.href = "search_result.html"
     }
+    $scope.resetSelectedItem = function(x){
+        $scope.searchingItem = x;
+        count = -1;
+    }
     document.onkeydown = checkKey;
     var count = -1;
     var page = 1;
     function checkKey(e) {
         // that works when search get smaller or bigger
-        // if ($(".searchLink").length != 0) {
-        //     $scope.listItems = $(".searchLink")
-        // }
+        if ($(".searchLink").length != 0) {
+            $scope.listItems = $(".searchLink")
+        }
         e = e || window.event;
         // it reduce count when kry up is pressed
         // console.log(count)
@@ -206,7 +210,7 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
             if (count < 1) {
                 // page = Math.floor($scope.listItems.length / 5)
                 // $('.searchResult').animate({ scrollTop: 300 * page }, 'fast');
-                count = ($scope.indexSearch.length) - 1
+                count = ($scope.listItems.length) - 1
             }
             else {
                 count--
@@ -225,7 +229,7 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
         }
         // it increase count when key down is pressed
         else if (e.keyCode == '40') {
-            if (count > ($scope.indexSearch.length) - 2) {
+            if (count > ($scope.listItems.length) - 2) {
                 count = 0
                 page = 1;
                 // $('.searchResult').animate({ scrollTop: 0 }, 'fast');
@@ -268,8 +272,9 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
             $scope.schoolPage($scope.indexSearch[count].id)
         }
         // adding selected class 
+        console.log($($scope.listItems[count]))
         $(".searchLink").removeClass("selected")
-        $("#list" + $scope.indexSearch[count].id).addClass("selected")
+        $($scope.listItems[count]).addClass("selected")
     }
 })
 $(document).ready(function () {
