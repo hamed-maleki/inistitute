@@ -21,7 +21,15 @@ body, html {
 a,p,h1,h2,h3,h4,h5,h6 {
     font-family: "Nazanin";
 }
+::-moz-selection { 
+    color: white;
+    background: #EA1E63;
+}
 
+::selection {
+    color: white;
+    background: #EA1E63;
+}
 img {
     width: 100%;
 }
@@ -200,6 +208,9 @@ nav {
     margin: 0 10px;
     padding: 0 5px;
     list-style-type: none;
+}
+.searchLink:hover {
+    background-color: rgba(0,0,0,0.4);
 }
 .subject:hover i {
     transform: rotatey(180deg);
