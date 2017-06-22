@@ -102,6 +102,7 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
                     $scope.indexSearch = response.data.college
                 })
         }
+        count = -1;
     }
     $scope.searchBox = function (x) {
         if (x == 1) {
@@ -189,6 +190,86 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
             }
         }
         window.location.href = "search_result.html"
+    }
+    document.onkeydown = checkKey;
+    var count = -1;
+    var page = 1;
+    function checkKey(e) {
+        // that works when search get smaller or bigger
+        // if ($(".searchLink").length != 0) {
+        //     $scope.listItems = $(".searchLink")
+        // }
+        e = e || window.event;
+        // it reduce count when kry up is pressed
+        // console.log(count)
+        if (e.keyCode == '38') {
+            if (count < 1) {
+                // page = Math.floor($scope.listItems.length / 5)
+                // $('.searchResult').animate({ scrollTop: 300 * page }, 'fast');
+                count = ($scope.indexSearch.length) - 1
+            }
+            else {
+                count--
+                // if (count % 4 == 0) {
+                //     if (count - 4 < 1) {
+                //         $('.searchResult').animate({ scrollTop: 0 }, 'slow');
+                //         page = 1
+                //     }
+                //     else {
+                //         page--
+                //         $('.searchResult').animate({ scrollTop: 300 * page }, 'slow');
+                //     }
+                // }
+            }
+            // console.log("up has been happened")
+        }
+        // it increase count when key down is pressed
+        else if (e.keyCode == '40') {
+            if (count > ($scope.indexSearch.length) - 2) {
+                count = 0
+                page = 1;
+                // $('.searchResult').animate({ scrollTop: 0 }, 'fast');
+            }
+            else {
+                count++
+                // if (count % 5 == 0 && count != 0) {
+                //     $('.searchResult').animate({ scrollTop: 300 * page }, 'slow');
+                //     page++
+                // }
+
+            }
+        }
+        // it does nothing
+        else if (e.keyCode == '37') {
+            console.log("left")
+        }
+        // it does nothing
+        else if (e.keyCode == '39') {
+            console.log("right")
+        }
+        // it got executed when enter key is pressed
+        else if (e.keyCode == '13') {
+            // looking for selected list
+            // for (var i = 0; i < $scope.listItems.length; i++) {
+            //     if ($($scope.listItems[i]).hasClass("selected")) {
+            //         // cheking if that is a child leef
+            //         if (!$($scope.listItems[i]).hasClass("child")) {
+            //             var valueLink = $($scope.listItems[i]).attr('value')
+            //             $scope.gettingSystem(valueLink, 1)
+            //         }
+            //         else {
+            //             var valueLink = $($scope.listItems[i]).attr('value');
+            //             var nameLink = $($scope.listItems[i]).attr('name');
+            //             $scope.searchClick(valueLink, nameLink)
+            //         }
+
+            //     }
+            // }
+            $scope.schoolPage($scope.indexSearch[count].id)
+        }
+        // adding selected class 
+        $(".searchLink").removeClass("selected")
+        $("#list" + $scope.indexSearch[count].id).addClass("selected")
     }
 })
 $(document).ready(function () {
