@@ -83,7 +83,7 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
     }
     $scope.systemSearch = function (x) {
         $(".checking").css("display", "none");
-        $("#check" + x).css("display", "block");
+        $("#check" + x).toggleClass("show");
         if (x == 1) {
             $http.get("data/university.json")
                 .then(function (response) {
@@ -106,11 +106,12 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
     }
     $scope.searchBox = function (x) {
         if (x == 1) {
-            if(window.innerWidth < 760){
-               $(".search-form").animate({ width: "60%" },"slow") 
+            $(".search-form").addClass("flag");
+            if (window.innerWidth < 760) {
+                $(".search-form").animate({ width: "60%" }, "slow")
             }
-            else{
-                $(".search-form").animate({ width: "30%" },"slow")
+            else {
+                $(".search-form").animate({ width: "30%" }, "slow")
             }
             $(".container-filter").css("filter", "blur(40px)")
             $(".container-filter").css("pointer-events", 'none')
@@ -191,7 +192,7 @@ app.controller('myCtrl', function ($scope, $http, $timeout, $filter, $interval) 
         }
         window.location.href = "search_result.html"
     }
-    $scope.resetSelectedItem = function(x){
+    $scope.resetSelectedItem = function (x) {
         $scope.searchingItem = x;
         count = -1;
     }
@@ -316,7 +317,7 @@ $(document).ready(function () {
 })
 function appleCheck() {
     if (window.innerWidth < 780 && window.innerWidth > 760) {
-       screen.orientation.lock('landscape');
+        screen.orientation.lock('landscape');
     }
 }
 appleCheck();
@@ -333,3 +334,16 @@ function test() {
     }
     $(".unfilter").toggleClass("flag")
 }
+window.addEventListener('click', function (e) {
+    if (!document.getElementById('clickbox').contains(e.target)) {
+        console.log("inside")
+    
+        if (!document.getElementById('searchButton').contains(e.target)) {
+            $(".search-form").animate({ width: "0%" });
+            $(".container-filter").css("filter", "blur(0px)")
+            $(".container-filter").css("pointer-events", '')
+            $(".checking").css("display", "none")
+        
+    }
+    }
+});

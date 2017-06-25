@@ -34,10 +34,13 @@ img {
     width: 100%;
 }
 nav {
-    background-color: #EA1E63;
+    background-color: #5F5F5F;
 }
 .logo {
     height: 50px;
+    width: 27%;
+    margin: 1px 0 0 28px;
+    float: left
 }
 .right-align {
     text-align: right;
@@ -61,7 +64,7 @@ nav {
     margin-top: 15px;
 }
 .big-square {
-    background-color: #5BB0E2;
+    background-color: #669999;
     color: white;
     margin:  -15px 0px 5px 5px;
     min-height: 305px;
@@ -78,7 +81,7 @@ nav {
     font-size: 44px;
 }
 .calendar {
-    background-color: #EA1E63;
+    background-color: #669999;
     color: white;
     padding: 5px 0px;
     border-radius: 2px;
@@ -91,7 +94,7 @@ nav {
 .calendar-container::before {
     content: '';
     display: inline-block;
-    border-bottom: 30px solid #EA1E63;
+    border-bottom: 30px solid #669999;
     border-left: 30px solid transparent;
     position: absolute;
     top: 143px;
@@ -100,7 +103,7 @@ nav {
 .calendar::after {
     content: '';
     display: inline-block;
-    border-top: 30px solid gray;
+    border-top: 30px solid #5F5F5F;
     border-right: 30px solid transparent;
     position: absolute;
     top: 144px;
@@ -126,7 +129,7 @@ nav {
     text-shadow: 3px 3px 15px rgba(0,0,0,0.4);
 }
 .search {
-    background-color: #EA1E63;
+    background-color: #669999;
     color: white;
 }
 .search i{
@@ -417,15 +420,30 @@ footer i{
     margin: 10px auto;
     height: 250px;
 }
+.show {
+    display: block !important;
+}
 .search-scroll {
     height: 335px;
     overflow-y: scroll;
     position: relative;
-    margin-top: 5px;
+    margin: -14px -10px 0;
+    width: 105%;
+    border-radius: 15px !important;
 }
 .selected {
     background-color: rgba(0,0,0,0.4) !important;
     color: white;
+}
+.searchForm h4, .searchForm label{
+    color: white;
+    padding-right: 8px;
+}
+.searchForm input, .searchForm select {
+    width: 98%;
+    border: none;
+    text-align: right;
+    padding: 0 15px;
 }
 .contact-icon {
     font-size: 40px;
@@ -440,6 +458,11 @@ footer i{
 label {
     direction: rtl;
 }
+.form-control-feedback {
+    position: absolute;
+    top: 45px;
+    left: 25px;
+}
 @media screen and (max-width:1024px){
     .subject {
         margin: 0 -7px 5px;
@@ -447,11 +470,10 @@ label {
 }
 @media screen and (max-width: 768px){
     .navbar-toggle {
-        top: -45px;
+        top: 0px;
         right: 10px;
     }
     .logo {
-        width: 36%;
         margin: 0 auto;
         display: block;
     }

@@ -9,10 +9,12 @@
     <link href="assets/styles/font-awesome.min.css" rel="stylesheet">
     <link href="assets/styles/doodlestyle.css" rel="stylesheet">
     <link href="assets/styles/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="assets/styles/persianDatepicker-default.css">
     <link href="assets/styles/main.css" rel="stylesheet">
     <script src="assets/scripts/jquery.min.js"></script>
     <script src="assets/scripts/bootstrap.min.js"></script>
     <script src="assets/scripts/angular.min.js"></script>
+    <script src="assets/scripts/persianDatepicker.min.js"></script>
     <script src="assets/scripts/perfect-scrollbar.min.js"></script>
     <script src="assets/scripts/main.js"></script>
     <style>
@@ -64,7 +66,7 @@
                         <!--تقویم-->
                     </div>
                     <div class="col-sm-12 center pointer my-padding">
-                        <div class="square shadow search" ng-click="searchBox(1)">
+                        <div class="square shadow search" id="searchButton" ng-click="searchBox(1)">
                             <i class="fa fa-search"></i>
                         </div>
                     </div>
@@ -143,47 +145,112 @@
     </div>
     <footer ng-include="'modules/footer.html'">
     </footer>
-    <div class="search-form ">
+    <div class="search-form " id="clickbox">
         <div class="container">
             <div class="row">
                 <div class="col-sm-1">
                     <i class="fa fa-close pointer" ng-click="searchBox(2)"></i>
                 </div>
                 <div class="clearfix"></div>
+                <div class="col-sm-12 my-margin-top">
+                    <form>
+                        <div class="form-group">
+                            <label for="search"> جستجو </label>
+                            <input type="text" placeholder="جستجو بر اسام نام یا رشته های مورد نظر" class="form-control" id="search" ng-model="searchItem"
+                                ng-change="resetSelectedItem(searchItem)" autocomplete="off">
+                            <span class="fa fa-search form-control-feedback"></span>
+                        </div>
+                    </form>
+                    <!--<div class="row search-scroll" id="myDemo">
+                        <li class="span-search pointer searchLink" id="list{{search.id}}" ng-repeat="search in indexSearch|filter:{name : searchingItem}" ng-click="schoolPage(search.id)">
+                            {{search.name}}
+                        </li>
+                    </div>-->
+                </div>
                 <div class="col-sm-12">
                     <div class="col-sm-4 my-margin-top" ng-repeat="system in systems">
-                        <div class="subject shadow center" ng-style="system.style" style="cursor: pointer" ng-click="systemSearch(system.id)">
-                            <i class="fa" ng-class="system.iconClass"></i>
-                            <h1>{{system.title}}</h1>
+                        <div class="subject shadow center" ng-style="system.style" style="cursor: pointer; margin: 0 -10px 0;" ng-click="systemSearch(system.id)">
+                            <i class="fa" style="font-size: 35px" ng-class="system.iconClass"></i>
+                            <h1 style="margin-top: 13px;padding-bottom:7px">{{system.title}}</h1>
                             <i class="fa fa-check checking" id="check{{system.id}}"></i>
                         </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="col-sm-12 my-margin-top">
+                <div class="col-sm-12 searchForm">
                     <form>
-                        <div class="form-group">
-                            <label for="search"> جستجو </label>
-                            <input type="text" placeholder="جستجو بر اسام نام یا رشته های مورد نظر" class="form-control" id="search" ng-model="searchItem" ng-change="resetSelectedItem(searchItem)" autocomplete="off">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <select>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                            </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>انتخاب رشته</label>
+                            </div>
+                            <div class="col-sm-8 my-margin-top">
+                                <select>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                            </select>
+                            </div>
+                            <div class="col-sm-4 my-margin-top">
+                                <label>انتخاب مکان</label>
+                            </div>
+                            <div class="col-sm-8"></div>
+                            <div class="col-sm-4">
+                                <h4>هزینه دوره</h4>
+                            </div>
+                            <div class="col-sm-6 col-sm-push-6">
+                                <input type="text" placeholder="از">
+                            </div>
+                            <div class="col-sm-6 col-sm-pull-6">
+                                <input type="text" placeholder="تا">
+                            </div>
+                            <div class="col-sm-8"></div>
+                            <div class="col-sm-4">
+                                <h4>زمان دوره</h4>
+                            </div>
+                            <div class="col-sm-6 col-sm-push-6">
+                                <input type="text" id="start1" placeholder="از تاریخ">
+                            </div>
+                            <div class="col-sm-6 col-sm-pull-6">
+                                <input type="text" placeholder="تا تاریخ">
+                            </div>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6 my-margin-top">
+                                <button class="btn btn-info" style="width: 100%">
+                                    جستجو
+                                </button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-danger">Submit</button>
                     </form>
-                    <div class="row search-scroll" id="myDemo">
-                        <li class="span-search pointer searchLink" id="list{{search.id}}" ng-repeat="search in indexSearch|filter:{name : searchingItem}" ng-click="schoolPage(search.id)">
-                            {{search.name}}
-                        </li>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
+    // datepicker function
+    $(function () {
+        $("#elementId, .elementClass").persianDatepicker();
+        $("#pdpDefault").persianDatepicker({ alwaysShow: false, showGregorianDate: true });
+        $("#start1").persianDatepicker({ cellWidth: 40, cellHeight: 40, fontSize: 18, showGregorianDate: true });
+        $("#finish1").persianDatepicker({ cellWidth: 40, cellHeight: 40, fontSize: 18, showGregorianDate: true });
+    });
+
+</script>
+    <script>
         $(function () {
             Ps.initialize(document.getElementById('myDemo'));
         });
-
     </script>
     <script src="assets/scripts/doodlescript.js"></script>
+    
 </body>
 
 </html>
